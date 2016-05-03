@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace CFE
 {
-    class StatBlock
+    class StatBlock : MonoBehaviour
     {
+        [SerializeField]
         int _agility, _strength, _intelligence;
 
         public int agility {get {return getModifier(_agility); }}

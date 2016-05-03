@@ -5,7 +5,7 @@ namespace CFE
 {
     class CombatState : GameState
     {
-        public static event EventHandler<InfoEventArgs<Entity>> OnCombatEnterEvent;
+        public static event EventHandler<InfoEventArgs<int>> combatEnterEvent;
 
         public CombatState()
         {
@@ -14,7 +14,7 @@ namespace CFE
 
         public override void onEnter()
         {
-            //OnCombatEnterEvent(this, )
+            combatEnterEvent(this, new InfoEventArgs<int>(0));
             Debug.LogError("Not implemented");
         }
 

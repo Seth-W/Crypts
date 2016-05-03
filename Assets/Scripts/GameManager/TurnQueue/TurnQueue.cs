@@ -12,7 +12,7 @@ namespace CFE
         public TurnQueue(List<Entity> entities)
         {
             queue = new List<QueueNode>();
-            if (entities == null)
+            if (entities == null || entities.Count == 0)
             {
                 Debug.LogError("Entity List returned NULL");
                 return;

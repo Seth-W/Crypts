@@ -58,6 +58,7 @@ namespace CFE
         }
         void populateStates()
         {
+            states = new Dictionary<StateEnum, GameState>();
             states.Add(StateEnum.CombatState, new CombatState());
         }
     }
