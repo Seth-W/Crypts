@@ -7,24 +7,28 @@ namespace CFE
     {
         public static FiniteStateMachine singleton;
 
-        private State _activeState;
-        public State activeState
+        private GameState _activeState;
+        public GameState activeState
         {
             get { return activeState; }
             set { transition(value); }
         }
         private bool _inTransition;
-        private Dictionary<StateEnum, State> stateList;
+        private Dictionary<StateEnum, GameState> states;
 
         void Start()
         {
             initAsUnique();
             init();
         }
+
+
+
+
         /**
         *<summary>Call to transition from State to state. Checks if already in transition and calls the OnEnter and OnExit methods for the respective states</summary>
         */
-        void transition(State targetState)
+        void transition(GameState targetState)
         {
             if (_inTransition == true)
                 return;
@@ -50,8 +54,11 @@ namespace CFE
         void init()
         {
             _inTransition = false;
+            populateStates();
         }
         void populateStates()
-        { }
+        {
+            states.Add(StateEnum.CombatState, new CombatState());
+        }
     }
 }
