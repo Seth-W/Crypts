@@ -6,7 +6,7 @@ namespace CFE
 {
     class TurnQueue
     {
-        public Entity activeEntity;
+        public Entity activeEntity { get { return queue[0].entity; } }
         List<QueueNode> queue;
 
         public TurnQueue(List<Entity> entities)
@@ -32,6 +32,16 @@ namespace CFE
             }
         }
 
+        public void nextTurn()
+        {
+            queue.RemoveAt(0);
+        }
+
+
+
+
+
+
         class QueueNode : IComparable
         {
             public int initiative;
@@ -54,6 +64,6 @@ namespace CFE
                 else
                     throw new ArgumentException("Object is not a QueueNode");
             }
-        }
+        }//End of QueueNode Inner Class
     }
 }

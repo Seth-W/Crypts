@@ -6,6 +6,7 @@ namespace CFE
 {
     class TurnQueueManager : MonoBehaviour
     {
+        public static Entity activeEntity;
         public TurnQueue queue;
 
         public Entity a, b, c;
@@ -31,7 +32,11 @@ namespace CFE
                 queue = new TurnQueue(entities);
         }
 
-
+        private void rollInitiative()
+        {
+            queue = new TurnQueue(entities);
+            activeEntity = queue.activeEntity;
+        }
 
         private void OnEntityCreatedEvent(object sender, InfoEventArgs<Entity> e)
         {
