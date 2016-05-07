@@ -5,16 +5,18 @@ namespace CFE
 {
     abstract class ObjectView : MonoBehaviour
     {
+
         bool _active;
-        bool active
+        public bool active
         {
             get { return _active; }
             set { setActive(value); }
         }
 
-        public abstract void OnHover();
-        public abstract void OnClick();
-        public abstract void OnRelease();
+        public abstract void HoverOn();
+        public abstract void HoverOff();
+        public abstract void MouseDown();
+        public abstract void MouseUp();
         public abstract void Enable();
         public abstract void Disable();
 

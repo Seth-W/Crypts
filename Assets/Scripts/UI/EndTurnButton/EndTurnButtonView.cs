@@ -33,19 +33,24 @@ namespace CFE.UI
                 */
         }
 
-        public override void OnHover()
+        public override void HoverOn()
         {
-            throw new NotImplementedException();
+            Debug.LogWarning("HoverOn called for " + this);
         }
 
-        public override void OnClick()
+        public override void HoverOff()
+        {
+            Debug.LogWarning("HoverOff called for " + this);
+        }
+
+        public override void MouseDown()
         {
             Vector3 newPos = transform.position;
             newPos.y -= .25f;
             transform.position = newPos;
         }
 
-        public override void OnRelease()
+        public override void MouseUp()
         {
             Vector3 newPos = transform.position;
             newPos.y += .25f;

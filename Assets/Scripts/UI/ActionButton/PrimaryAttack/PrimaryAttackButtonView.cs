@@ -18,17 +18,22 @@ namespace CFE.UI
             throw new NotImplementedException();
         }
 
-        public override void OnClick()
+        public override void MouseDown()
         {
             throw new NotImplementedException();
         }
 
-        public override void OnHover()
+        public override void HoverOn()
         {
             throw new NotImplementedException();
         }
 
-        public override void OnRelease()
+        public override void HoverOff()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MouseUp()
         {
             throw new NotImplementedException();
         }
