@@ -9,7 +9,17 @@ namespace CFE
 
         public StatBlock stats;
 
-        protected bool combatActionAvailable;
+        protected bool _combatActionAvailable;
+        protected bool _maneuverActionAvailable;
+
+        public bool actionAvailable
+        {
+            get { return _combatActionAvailable || _maneuverActionAvailable; }
+        }
+        public bool combatActionAvailable
+        { get { return _combatActionAvailable; } }
+        public bool maneuverActionAvailabe
+        { get { return _maneuverActionAvailable; } }
 
         void Start()
         {
@@ -44,7 +54,9 @@ namespace CFE
 
         private void resetActions()
         {
-            combatActionAvailable = true;
+            _combatActionAvailable = true;
+            Debug.LogWarning("ManeuverAction Not implemented. Does not reset.");
+            _maneuverActionAvailable = false;
         }
 
         public virtual void takeDamage(Entity attacker, int n)

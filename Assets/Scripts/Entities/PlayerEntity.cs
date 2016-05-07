@@ -18,11 +18,12 @@ namespace CFE
         }
         public void click()
         {
-            if (combatActionAvailable)
+            if (_combatActionAvailable)
             {
                 combatAction();
-                combatActionAvailable = false;
+                _combatActionAvailable = false;
             }
+            Debug.LogWarning("This almost definitely shouldnt happen this way");
         }
     }
 }

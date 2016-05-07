@@ -34,6 +34,7 @@ namespace CFE
 
         public void nextTurn()
         {
+            queue.Add(queue[0]);
             queue.RemoveAt(0);
         }
 

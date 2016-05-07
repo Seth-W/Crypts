@@ -22,6 +22,14 @@ namespace CFE
             init();
         }
 
+        void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                transition(StateEnum.CombatState);
+            }
+        }
+
 
 
 
@@ -38,6 +46,21 @@ namespace CFE
             _activeState.onEnter();
             _inTransition = false;
         }
+        void transition(StateEnum targetState)
+        {
+            GameState state = states[targetState];
+            if (state != null)
+            {
+                transition(state);
+            }
+            else
+            {
+                Debug.LogError("Target enum: " + targetState + " was not in the state list");
+            }
+        }
+            
+
+
         /**
         *<summary>Checks if another FSM exists in the scene and deletes this object if so</summary>
         */
@@ -60,6 +83,9 @@ namespace CFE
         {
             states = new Dictionary<StateEnum, GameState>();
             states.Add(StateEnum.CombatState, new CombatState());
+
+
+            _activeState = states[StateEnum.CombatState];
         }
     }
 }

@@ -32,14 +32,14 @@ namespace CFE
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-                queue = new TurnQueue(entities);
+
         }
 
         private void rollInitiative()
         {
             queue = new TurnQueue(entities);
             activeEntity = queue.activeEntity;
+            Debug.Log(activeEntity.actionAvailable);
         }
 
         private void nextTurn()
