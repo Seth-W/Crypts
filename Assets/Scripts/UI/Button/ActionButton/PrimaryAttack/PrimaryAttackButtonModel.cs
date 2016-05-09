@@ -8,10 +8,9 @@ namespace CFE.UI
     [RequireComponent(typeof(PrimaryAttackButtonControl))]
     class PrimaryAttackButtonModel : ActionButtonModel
     {
-
         public override bool isAvailable()
         {
-            return TurnQueueManager.activeEntity.combatActionAvailable;
+            throw new NotImplementedException();
         }
     }
 }

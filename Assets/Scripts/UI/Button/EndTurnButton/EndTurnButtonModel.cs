@@ -8,8 +8,6 @@ namespace CFE.UI
     [RequireComponent(typeof(EndTurnButtonView))]
     class EndTurnButtonModel : MonoBehaviour
     {
-        public bool actionAvailable
-        { get { return TurnQueueManager.activeEntity.actionAvailable; } }
 
     }
 }

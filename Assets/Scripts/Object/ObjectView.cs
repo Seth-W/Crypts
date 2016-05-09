@@ -5,7 +5,7 @@ namespace CFE
 {
     abstract class ObjectView : MonoBehaviour
     {
-        public Renderer rend;
+        protected Renderer rend;
 
         public virtual void Start()
         {

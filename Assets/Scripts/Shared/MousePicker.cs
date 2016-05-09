@@ -8,8 +8,7 @@ public class MousePicker : MonoBehaviour
 
     GameObject pickedLastFrame;
     GameObject pickedThisFrame;
-    ObjectView pickedView;
-    ObjectView clickedView;
+    GameObject clickedObject;
     bool runClick;
     int layerMask = int.MaxValue;
 
@@ -28,38 +27,35 @@ public class MousePicker : MonoBehaviour
 
     void Update()
     {
-        runClick = Input.GetMouseButton(0);
         mousePick();
-        if(pickedLastFrame != pickedThisFrame)
-        {
-            if(pickedView != null)
-                pickedView.HoverOff();
+
+        if(pickedLastFrame != pickedThisFrame && pickedLastFrame != null)//If the mouse is over not over the same object it was last frame
+        {                                                                //Disables the Hover effect for the object from last frame
+            pickedLastFrame.SendMessage("HoverOff");
         }
-        if(pickedThisFrame != null)
-            pickedView = pickedThisFrame.GetComponent<ObjectView>();
-        if (pickedView == null)
-            return;
-        if(Input.GetMouseButtonUp(0))
-        {
-            if (clickedView != null)
-                clickedView.MouseUp();
+
+        if(Input.GetMouseButtonUp(0))//If mouse click was released, calls mouseup on the stored clickedObject
+        {                            // then sets clickedObject to null (since mouseButtonUp can't happen without mouseButtonDown first)
+            if (clickedObject != null)
+                clickedObject.SendMessage("MouseUp");
             else
                 Debug.LogError("ClickedView == null");
-            clickedView = null;
+            clickedObject = null;
         }
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0))//If mouse is clicked, assign pickedThisFrame to clickedObject and call MouseUp methods
         {
-            clickedView = pickedThisFrame.GetComponent<ObjectView>();
-            if(clickedView != null)
-                clickedView.MouseDown();
+            clickedObject = pickedThisFrame;
+            if (clickedObject != null)
+                clickedObject.SendMessage("MouseDown");
         }
-        pickedView = pickedThisFrame.GetComponent<ObjectView>();
-        if (pickedView != null && pickedThisFrame != pickedLastFrame)
-        {
-            pickedView.HoverOn();
-            Debug.Log("Calling HoverOn for " + pickedView.gameObject);
+
+        if (pickedThisFrame != null && pickedThisFrame != pickedLastFrame)//If the mousepick returns an object and that object is 
+        {                                                                 //different than the one picked last frame, calls HoverOn methods
+            pickedThisFrame.SendMessage("HoverOn");
         }
-        pickedLastFrame = pickedThisFrame;
+
+        pickedLastFrame = pickedThisFrame;                                //Update pickedLastFrame
     }
 
     public bool mousePick()
