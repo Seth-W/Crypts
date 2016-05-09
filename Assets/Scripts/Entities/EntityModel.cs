@@ -3,9 +3,9 @@ using System;
 
 namespace CFE
 {
-    abstract class Entity : MonoBehaviour
+    abstract class EntityModel : ObjectModel
     {
-        public static event EventHandler<InfoEventArgs<Entity>> entityCreatedEvent;
+        public static event EventHandler<InfoEventArgs<EntityModel>> entityCreatedEvent;
 
         public StatBlock stats;
 
@@ -23,7 +23,7 @@ namespace CFE
 
         void Start()
         {
-            entityCreatedEvent(this, new InfoEventArgs<Entity>(this));
+            entityCreatedEvent(this, new InfoEventArgs<EntityModel>(this));
             resetActions();
         }
 
@@ -59,7 +59,7 @@ namespace CFE
             _maneuverActionAvailable = false;
         }
 
-        public virtual void takeDamage(Entity attacker, int n)
+        public virtual void takeDamage(EntityModel attacker, int n)
         {
             Debug.Log("Took " + n + " damage from " + attacker);
             Debug.LogError("Default take damage not implemented");
@@ -67,7 +67,7 @@ namespace CFE
 
         public abstract ICommand combatAction();
 
-        private void OnNewTurnEvent(object sender, InfoEventArgs<Entity> e)
+        private void OnNewTurnEvent(object sender, InfoEventArgs<EntityModel> e)
         {
             if (e.info != this)
                 return;

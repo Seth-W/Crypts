@@ -4,9 +4,9 @@ using UnityEngine;
 namespace CFE
 {
     [RequireComponent(typeof(StatBlock))]
-    class PlayerEntity : Entity
+    class PlayerEntityModel : EntityModel
     {
-        public Entity other;
+        public EntityModel other;
 
         public override ICommand combatAction()
         {

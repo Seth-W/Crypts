@@ -10,32 +10,24 @@ namespace CFE.UI
     {
         public override void Disable()
         {
-            throw new NotImplementedException();
+            rend.material.color = Color.gray;
         }
 
         public override void Enable()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void MouseDown()
-        {
-            throw new NotImplementedException();
+            Debug.Log("Enable called");
+            rend.material.color = Color.green;
         }
 
         public override void HoverOn()
         {
-            throw new NotImplementedException();
+            Debug.LogError("HoverOn not enabled for " + this);
         }
 
         public override void HoverOff()
         {
-            throw new NotImplementedException();
+            Debug.LogError("HoverOff not enabled for " + this);
         }
 
-        public override void MouseUp()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

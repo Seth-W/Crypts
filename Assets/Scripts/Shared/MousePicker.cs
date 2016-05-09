@@ -4,6 +4,8 @@ using System;
 
 public class MousePicker : MonoBehaviour
 {
+    public static MousePicker singleton;
+
     GameObject pickedLastFrame;
     GameObject pickedThisFrame;
     ObjectView pickedView;
@@ -14,6 +16,14 @@ public class MousePicker : MonoBehaviour
     void Start()
     {
         runClick = false;
+        if (singleton == null)
+        {
+            singleton = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     void Update()

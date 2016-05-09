@@ -6,27 +6,27 @@ namespace CFE
 {
     class TurnQueueManager : MonoBehaviour
     {
-        public static event EventHandler<InfoEventArgs<Entity>> newTurnEvent;
+        public static event EventHandler<InfoEventArgs<EntityModel>> newTurnEvent;
 
-        public static Entity activeEntity;
+        public static EntityModel activeEntity;
         public TurnQueue queue;
 
-        public Entity a, b, c;
-        List<Entity> entities;
+        public EntityModel a, b, c;
+        List<EntityModel> entities;
 
         void Start()
         {
-            entities = new List<Entity>();
+            entities = new List<EntityModel>();
         }
 
         void OnEnable()
         {
-            Entity.entityCreatedEvent += OnEntityCreatedEvent;
+            EntityModel.entityCreatedEvent += OnEntityCreatedEvent;
             CombatState.combatEnterEvent += OnCombatEnterEvent;
         }
         void OnDisable()
         {
-            Entity.entityCreatedEvent -= OnEntityCreatedEvent;
+            EntityModel.entityCreatedEvent -= OnEntityCreatedEvent;
             CombatState.combatEnterEvent -= OnCombatEnterEvent;
         }
 
@@ -45,11 +45,11 @@ namespace CFE
         private void nextTurn()
         {
             queue.nextTurn();
-            newTurnEvent(this, new InfoEventArgs<Entity>(activeEntity));
+            newTurnEvent(this, new InfoEventArgs<EntityModel>(activeEntity));
         }
 
 
-        private void OnEntityCreatedEvent(object sender, InfoEventArgs<Entity> e)
+        private void OnEntityCreatedEvent(object sender, InfoEventArgs<EntityModel> e)
         {
             entities.Add(e.info);
         }

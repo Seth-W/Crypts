@@ -5,10 +5,10 @@ namespace CFE.Commnads.Entities
 {
     class AttackCommand : ICommand
     {
-        private Entity attacker, defender;
+        private EntityModel attacker, defender;
         private int amount;
 
-        public AttackCommand(Entity a, Entity d, int n)
+        public AttackCommand(EntityModel a, EntityModel d, int n)
         {
             attacker = a;
             defender = d;

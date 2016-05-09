@@ -4,12 +4,6 @@ namespace CFE
 {
     class SceneryObjectView : ObjectView
     {
-        Renderer rend;
-
-        void Start()
-        {
-            rend = GetComponent<Renderer>();
-        }
 
         public override void Disable()
         {
@@ -19,14 +13,14 @@ namespace CFE
         {
         }
 
-        public override void HoverOff()
-        {
-            rend.material.color = Color.gray;
-        }
-
         public override void HoverOn()
         {
             rend.material.color = Color.white;
+        }
+
+        public override void HoverOff()
+        {
+            rend.material.color = new Color(.8f, .8f, .8f, 1f) ;
         }
 
         public override void MouseDown()

@@ -5,6 +5,14 @@ namespace CFE
 {
     abstract class ObjectView : MonoBehaviour
     {
+        public Renderer rend;
+
+        public virtual void Start()
+        {
+            rend = GetComponent<Renderer>();
+            setActive(true);
+        }
+
 
         bool _active;
         public bool active

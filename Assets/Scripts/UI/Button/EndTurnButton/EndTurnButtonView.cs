@@ -11,14 +11,10 @@ namespace CFE.UI
     {
         EndTurnButtonModel thisModel;
 
-        public ColorBlock cb;
-        public Renderer rend;
-
-        void Start()
+        public override void Start() 
         {
+            base.Start();
             thisModel = GetComponent<EndTurnButtonModel>();
-            rend = GetComponent<Renderer>();
-            setActive(true);
         }
 
         void Update()
@@ -35,12 +31,12 @@ namespace CFE.UI
 
         public override void HoverOn()
         {
-            Debug.LogWarning("HoverOn called for " + this);
+            Debug.LogError("HoverOn not enabled for " + this);
         }
 
         public override void HoverOff()
         {
-            Debug.LogWarning("HoverOff called for " + this);
+            Debug.LogError("HoverOff not enabled for " + this);
         }
 
         public override void MouseDown()
@@ -59,6 +55,7 @@ namespace CFE.UI
 
         public override void Enable()
         {
+            Debug.Log("Enable called");
             rend.material.color = Color.green;
         }
 

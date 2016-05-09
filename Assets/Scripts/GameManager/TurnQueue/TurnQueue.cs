@@ -6,10 +6,10 @@ namespace CFE
 {
     class TurnQueue
     {
-        public Entity activeEntity { get { return queue[0].entity; } }
+        public EntityModel activeEntity { get { return queue[0].entity; } }
         List<QueueNode> queue;
 
-        public TurnQueue(List<Entity> entities)
+        public TurnQueue(List<EntityModel> entities)
         {
             queue = new List<QueueNode>();
             if (entities == null || entities.Count == 0)
@@ -19,7 +19,7 @@ namespace CFE
             }
 
             QueueNode n;
-            foreach (Entity e in entities)
+            foreach (EntityModel e in entities)
             {
                 n = new QueueNode(e, e.rollInitiative());
                 queue.Add(n);
@@ -46,10 +46,10 @@ namespace CFE
         class QueueNode : IComparable
         {
             public int initiative;
-            public Entity entity;
+            public EntityModel entity;
 
 
-            public QueueNode(Entity e, int i)
+            public QueueNode(EntityModel e, int i)
             {
                 entity = e;
                 initiative = i;
