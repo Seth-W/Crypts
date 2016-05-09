@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CFE
 {
-    abstract class EntityControl : ObjectControl
+    abstract class ButtonModel : ObjectModel
     {
     }
 }

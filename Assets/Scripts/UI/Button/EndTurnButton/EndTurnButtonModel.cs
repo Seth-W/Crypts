@@ -1,21 +1,25 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace CFE.UI
+namespace CFE
 {
     [RequireComponent(typeof(EndTurnButtonControl))]
     [RequireComponent(typeof(EndTurnButtonView))]
-    class EndTurnButtonModel : ObjectModel
+    class EndTurnButtonModel : ButtonModel
     {
-        public override void Disable()
+        public override void Start()
         {
-            Debug.LogError("Disable not implemented for " + this);
+            base.Start();
+            Disable();
         }
 
         public override void Enable()
         {
-            Debug.LogError("Enable not implemented for " + this);
+            base.Enable();
+        }
+        public override void Disable()
+        {
+            base.Disable();
         }
     }
 }

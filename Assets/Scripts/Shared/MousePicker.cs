@@ -6,9 +6,9 @@ public class MousePicker : MonoBehaviour
 {
     public static MousePicker singleton;
 
-    GameObject pickedLastFrame;
-    GameObject pickedThisFrame;
-    GameObject clickedObject;
+    ObjectControl pickedLastFrame;
+    ObjectControl pickedThisFrame;
+    ObjectControl clickedObject;
     bool runClick;
     int layerMask = int.MaxValue;
 
@@ -27,32 +27,33 @@ public class MousePicker : MonoBehaviour
 
     void Update()
     {
-        mousePick();
-
-        if(pickedLastFrame != pickedThisFrame && pickedLastFrame != null)//If the mouse is over not over the same object it was last frame
-        {                                                                //Disables the Hover effect for the object from last frame
-            pickedLastFrame.SendMessage("HoverOff");
-        }
-
-        if(Input.GetMouseButtonUp(0))//If mouse click was released, calls mouseup on the stored clickedObject
-        {                            // then sets clickedObject to null (since mouseButtonUp can't happen without mouseButtonDown first)
-            if (clickedObject != null)
-                clickedObject.SendMessage("MouseUp");
-            else
-                Debug.LogError("ClickedView == null");
-            clickedObject = null;
-        }
-
-        if (Input.GetMouseButtonDown(0))//If mouse is clicked, assign pickedThisFrame to clickedObject and call MouseUp methods
+        if (mousePick())
         {
-            clickedObject = pickedThisFrame;
-            if (clickedObject != null)
-                clickedObject.SendMessage("MouseDown");
-        }
+            if (pickedLastFrame != pickedThisFrame && pickedLastFrame != null)//If the mouse is over not over the same object it was last frame
+            {                                                                //Disables the Hover effect for the object from last frame
+                pickedLastFrame.SendMessage("HoverOff");
+            }
 
-        if (pickedThisFrame != null && pickedThisFrame != pickedLastFrame)//If the mousepick returns an object and that object is 
-        {                                                                 //different than the one picked last frame, calls HoverOn methods
-            pickedThisFrame.SendMessage("HoverOn");
+            if (Input.GetMouseButtonUp(0))//If mouse click was released, calls mouseup on the stored objectView
+            {                            // then sets clickedObject to null (since mouseButtonUp can't happen without mouseButtonDown first)
+                if (clickedObject != null)
+                    clickedObject.MouseUp();
+                else
+                    Debug.LogError("ClickedView == null");
+                clickedObject = null;
+            }
+
+            if (Input.GetMouseButtonDown(0))//If mouse is clicked, assign pickedThisFrame to clickedObject and call MouseUp methods
+            {
+                clickedObject = pickedThisFrame;
+                if (clickedObject != null)
+                    clickedObject.MouseDown();
+            }
+
+            if (pickedThisFrame != pickedLastFrame)//If when picked this frame is different than picked last frame, this is the first frame the object has been picked, so I call HoverOn
+            {                                                                
+                pickedThisFrame.HoverOn();
+            }
         }
 
         pickedLastFrame = pickedThisFrame;                                //Update pickedLastFrame
@@ -69,7 +70,7 @@ public class MousePicker : MonoBehaviour
             pickedThisFrame = null;
             return false;
         }
-        pickedThisFrame = hitObject.transform.gameObject;
-        return true;
+        pickedThisFrame = hitObject.transform.gameObject.GetComponent<ObjectControl>();
+        return (pickedThisFrame != null);
     }
 }

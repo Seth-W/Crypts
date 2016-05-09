@@ -1,23 +1,18 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace CFE.UI
+namespace CFE
 {
-    [RequireComponent(typeof(EndTurnButtonView))]
     [RequireComponent(typeof(EndTurnButtonModel))]
-    class EndTurnButtonControl : ObjectControl
+    [RequireComponent(typeof(EndTurnButtonView))]
+    class EndTurnButtonControl : ButtonControl
     {
-
-        public override void MouseDown()
-        {
-            base.MouseDown();
-        }
+        public static event EventHandler<InfoEventArgs<bool>> endTurnButtonPressedEvent;
 
         public override void MouseUp()
         {
             base.MouseUp();
-            Debug.LogError("MouseUp not implemented for " + this);
+            endTurnButtonPressedEvent(this, new InfoEventArgs<bool>(true));
         }
     }
 }

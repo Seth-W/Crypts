@@ -1,23 +1,22 @@
-﻿using UnityEngine.UI;
+﻿using System;
 using UnityEngine;
-using System;
 
-namespace CFE.UI
+namespace CFE
 {
-    abstract class ActionButtonView : ObjectView
+    abstract class ButtonView : ObjectView
     {
         public override void OnMouseDown()
         {
             Vector3 newPos = transform.position;
             newPos.y -= .25f;
-            transform.position = newPos; ;
+            transform.position = newPos;
         }
 
         public override void OnMouseUp()
         {
             Vector3 newPos = transform.position;
             newPos.y += .25f;
-            transform.position = newPos; ;
+            transform.position = newPos;
         }
     }
 }
