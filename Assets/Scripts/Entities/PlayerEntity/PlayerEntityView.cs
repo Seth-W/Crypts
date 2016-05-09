@@ -7,34 +7,34 @@ namespace CFE
     [RequireComponent(typeof(PlayerEntityControl))]
     class PlayerEntityView : EntityView
     {
-        public override void Disable()
+        public override void OnDisable()
         {
-            Debug.LogError("Disable not implemented for " + this);
+            Debug.LogError("OnDisable not implemented for " + this);
         }
 
-        public override void Enable()
+        public override void OnEnable()
         {
-            Debug.LogError("Enable not implemented for " + this);
+            Debug.LogError("OnEnable not implemented for " + this);
         }
 
-        public override void HoverOff()
+        public override void OnHoverOff()
         {
-            Debug.LogError("HoverOff not implemented for " + this);
+            Debug.LogError("OnHoverOff not implemented for " + this);
         }
 
-        public override void HoverOn()
+        public override void OnHoverOn()
         {
-            Debug.LogError("HoverOn not implemented for " + this);
+            Debug.LogError("OnHoverOn not implemented for " + this);
         }
 
-        public override void MouseDown()
+        public override void OnMouseDown()
         {
-            Debug.LogError("MouseDown not implemented for " + this);
+            Debug.LogError("OnMouseDown not implemented for " + this);
         }
 
-        public override void MouseUp()
+        public override void OnMouseUp()
         {
-            Debug.LogError("MouseUp not implemented for " + this);
+            Debug.LogError("OnMouseUp not implemented for " + this);
         }
     }
 }

@@ -8,23 +8,23 @@ namespace CFE.UI
     [RequireComponent(typeof(PrimaryAttackButtonModel))]
     class PrimaryAttackButtonView : ActionButtonView
     {
-        public override void Disable()
+        public override void OnDisable()
         {
             rend.material.color = Color.gray;
         }
 
-        public override void Enable()
+        public override void OnEnable()
         {
             Debug.Log("Enable called");
             rend.material.color = Color.green;
         }
 
-        public override void HoverOn()
+        public override void OnHoverOn()
         {
             Debug.LogError("HoverOn not enabled for " + this);
         }
 
-        public override void HoverOff()
+        public override void OnHoverOff()
         {
             Debug.LogError("HoverOff not enabled for " + this);
         }

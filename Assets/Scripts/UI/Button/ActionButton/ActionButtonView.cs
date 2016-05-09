@@ -6,14 +6,14 @@ namespace CFE.UI
 {
     abstract class ActionButtonView : ObjectView
     {
-        public override void MouseDown()
+        public override void OnMouseDown()
         {
             Vector3 newPos = transform.position;
             newPos.y -= .25f;
             transform.position = newPos; ;
         }
 
-        public override void MouseUp()
+        public override void OnMouseUp()
         {
             Vector3 newPos = transform.position;
             newPos.y += .25f;

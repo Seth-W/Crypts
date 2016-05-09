@@ -6,6 +6,5 @@ namespace CFE.UI
 {
     abstract class ActionButtonControl : MonoBehaviour
     {
-        public abstract void OnClick();
     }
 }

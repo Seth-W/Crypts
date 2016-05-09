@@ -6,13 +6,18 @@ namespace CFE.UI
 {
     [RequireComponent(typeof(EndTurnButtonView))]
     [RequireComponent(typeof(EndTurnButtonModel))]
-    class EndTurnButtonControl : MonoBehaviour
+    class EndTurnButtonControl : ObjectControl
     {
-        public static event EventHandler<InfoEventArgs<bool>> EndTurnButtonControlClick;
 
-        public void OnClick()
+        public override void MouseDown()
         {
-            EndTurnButtonControlClick(this, new InfoEventArgs<bool>(true));
+            base.MouseDown();
+        }
+
+        public override void MouseUp()
+        {
+            base.MouseUp();
+            Debug.LogError("MouseUp not implemented for " + this);
         }
     }
 }

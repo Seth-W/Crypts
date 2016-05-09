@@ -29,37 +29,37 @@ namespace CFE.UI
                 */
         }
 
-        public override void HoverOn()
+        public override void OnHoverOn()
         {
-            Debug.LogError("HoverOn not enabled for " + this);
+            Debug.LogError("OnHoverOn not enabled for " + this);
         }
 
-        public override void HoverOff()
+        public override void OnHoverOff()
         {
-            Debug.LogError("HoverOff not enabled for " + this);
+            Debug.LogError("OnHoverOff not enabled for " + this);
         }
 
-        public override void MouseDown()
+        public override void OnMouseDown()
         {
             Vector3 newPos = transform.position;
             newPos.y -= .25f;
             transform.position = newPos;
         }
 
-        public override void MouseUp()
+        public override void OnMouseUp()
         {
             Vector3 newPos = transform.position;
             newPos.y += .25f;
             transform.position = newPos;
         }
 
-        public override void Enable()
+        public override void OnEnable()
         {
-            Debug.Log("Enable called");
+            Debug.Log("OnEnable called");
             rend.material.color = Color.green;
         }
 
-        public override void Disable()
+        public override void OnDisable()
         {
             rend.material.color = Color.yellow;
         }

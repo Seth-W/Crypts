@@ -5,29 +5,29 @@ namespace CFE
     class SceneryObjectView : ObjectView
     {
 
-        public override void Disable()
+        public override void OnDisable()
         {
         }
 
-        public override void Enable()
+        public override void OnEnable()
         {
         }
 
-        public override void HoverOn()
+        public override void OnHoverOn()
         {
             rend.material.color = Color.white;
         }
 
-        public override void HoverOff()
+        public override void OnHoverOff()
         {
             rend.material.color = new Color(.8f, .8f, .8f, 1f) ;
         }
 
-        public override void MouseDown()
+        public override void OnMouseDown()
         {
         }
 
-        public override void MouseUp()
+        public override void OnMouseUp()
         {
         }
     }
