@@ -5,7 +5,7 @@ namespace CFE
 {
     abstract class ObjectView : MonoBehaviour
     {
-        protected Renderer rend;
+        public Renderer rend;
         ObjectModel model;
         protected bool active { get { return model.active; } }
 

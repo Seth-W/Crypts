@@ -5,7 +5,7 @@ namespace CFE
 {
     [RequireComponent(typeof(EndTurnButtonModel))]
     [RequireComponent(typeof(EndTurnButtonView))]
-    class EndTurnButtonControl : ButtonControl
+    class EndTurnButtonControl : ObjectControl
     {
         public static event EventHandler<InfoEventArgs<bool>> endTurnButtonPressedEvent;
 

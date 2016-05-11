@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace CFE
 {
-    [RequireComponent(typeof(EndTurnButtonModel))]
-    [RequireComponent(typeof(EndTurnButtonControl))]
     class EndTurnButtonView : ButtonView
     {
         public override void OnDisable()

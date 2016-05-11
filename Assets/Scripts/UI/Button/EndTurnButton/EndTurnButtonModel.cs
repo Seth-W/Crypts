@@ -3,9 +3,7 @@ using UnityEngine;
 
 namespace CFE
 {
-    [RequireComponent(typeof(EndTurnButtonControl))]
-    [RequireComponent(typeof(EndTurnButtonView))]
-    class EndTurnButtonModel : ButtonModel
+    class EndTurnButtonModel : ObjectModel
     {
         public override void Start()
         {

@@ -6,6 +6,7 @@ namespace CFE
 {
     class TurnQueueManager : MonoBehaviour
     {
+        public static event EventHandler<InfoEventArgs<EntityModel>> endTurnEvent;
         EntityModel activeEntity { get { return queue.activeEntity; } }
         List<EntityModel> entities;
         TurnQueue queue;
@@ -13,11 +14,13 @@ namespace CFE
         void OnEnable()
         {
             EntityModel.newEntityEvent += onNewEntityEvent;
+            EndTurnButtonControl.endTurnButtonPressedEvent += OnEndTurnButtonPressedEvent;
         }
 
         void OnDisable()
         {
             EntityModel.newEntityEvent -= onNewEntityEvent;
+            EndTurnButtonControl.endTurnButtonPressedEvent -= OnEndTurnButtonPressedEvent;
         }
 
         void Start()
@@ -39,6 +42,12 @@ namespace CFE
         private void onNewEntityEvent(object sender, InfoEventArgs<EntityModel> e)
         {
             entities.Add(e.info);
+        }
+
+        private void OnEndTurnButtonPressedEvent(object sender, InfoEventArgs<bool> e)
+        {
+            queue.endTurn();
+            endTurnEvent(this, new InfoEventArgs<EntityModel>(activeEntity));
         }
 
     }

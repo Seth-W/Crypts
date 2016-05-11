@@ -29,6 +29,17 @@ namespace CFE
             }
         }
 
+        public void endTurn()
+        {
+            if(initiativeOrder.Count == 0)
+            {
+                Debug.LogError("No entities present in TurnQueue");
+                return;
+            }
+            initiativeOrder.Add(initiativeOrder[0]);
+            initiativeOrder.RemoveAt(0);
+        }
+
         class QueueNode : IComparable
         {
             private EntityModel _entity;

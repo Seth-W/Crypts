@@ -67,8 +67,7 @@ public class MousePicker : MonoBehaviour
         Physics.Raycast(ray.origin, ray.direction, out hitObject, 1000f, layerMask);
         if (hitObject.transform == null)
         {
-            pickedThisFrame = null;
-            return false;
+            pickedThisFrame = null; return false;
         }
         pickedThisFrame = hitObject.transform.gameObject.GetComponent<ObjectControl>();
         return (pickedThisFrame != null);
