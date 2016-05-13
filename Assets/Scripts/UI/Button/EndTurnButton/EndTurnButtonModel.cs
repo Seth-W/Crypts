@@ -8,16 +8,17 @@ namespace CFE
         public override void Start()
         {
             base.Start();
-            Disable();
+            active = false;
         }
 
-        public override void Enable()
+        public override void Activate()
         {
-            base.Enable();
+
         }
-        public override void Disable()
+
+        public override void Deactivate()
         {
-            base.Disable();
+
         }
     }
 }

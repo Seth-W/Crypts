@@ -5,15 +5,15 @@ namespace CFE
 {
     class EndTurnButtonView : ButtonView
     {
-        public override void OnDisable()
+        public override void OnDeactivate()
         {
-            base.OnDisable();
+            base.OnDeactivate();
             rend.material.color = Color.yellow;
         }
 
-        public override void OnEnable()
+        public override void OnActivate()
         {
-            base.OnEnable();
+            base.OnActivate();
             rend.material.color = Color.green;
         }
     }

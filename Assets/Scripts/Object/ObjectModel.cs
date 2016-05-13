@@ -10,6 +10,7 @@ namespace CFE
         public bool active
         {
             get { return _active; }
+            set { setActive(value); }
         }
 
         public virtual void Start()
@@ -21,15 +22,18 @@ namespace CFE
 
 
 
-        public virtual void Enable()
+        public abstract void Activate();
+        public abstract void Deactivate();
+
+        private void setActive(bool b)
         {
-            _active = true;
-            view.OnEnable();
-        }
-        public virtual void Disable()
-        {
-            _active = false;
-            view.OnDisable();
+            if (_active = b)
+                return;
+            _active = b;
+            if (b)
+                Activate();
+            else
+                Deactivate();
         }
     }
 }
