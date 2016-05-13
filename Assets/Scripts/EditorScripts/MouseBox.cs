@@ -3,6 +3,9 @@ using Vectrosity;
 
 namespace CFE.Editor
 {
+    /**
+    *<summary>Creates a box around the mouse pointer using editor specified values</summary>
+    */
     class MouseBox : MonoBehaviour
     {
         public int xOffset, yOffset;
@@ -26,7 +29,10 @@ namespace CFE.Editor
             }
             box.Draw();
         }
-
+        
+        /**
+        *<summary>Takes editor specified x,y values and offsets them from the mouse's location on screen to create a box around the pointer</summary>
+        */
         void setCoordinates()
         {
             Vector3 mousePos = Input.mousePosition;
