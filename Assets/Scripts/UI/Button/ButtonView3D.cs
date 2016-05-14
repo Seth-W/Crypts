@@ -45,7 +45,7 @@ namespace CFE
         *Called by and ObjectControl on the first frame that the mouse left clicks down while hovering over this gameObject
         *</summary>
         */
-        public virtual void OnMouseDown()
+        public virtual void OnPrimaryMouseDown()
         {
             Debug.Log("Called OnMouseDown for " + this);
             Vector3 newPos = transform.position;
@@ -58,7 +58,7 @@ namespace CFE
         *Called by and ObjectControl on the first frame that the mouse left clicks up after left clicking down on this object
         *</summary>
         */
-        public virtual void OnMouseUp()
+        public virtual void OnPrimaryMouseUp()
         {
             Debug.Log("Called OnMouseUp for " + this);
             Vector3 newPos = transform.position;
@@ -86,7 +86,7 @@ namespace CFE
             Debug.LogWarning("Called OnDeactivate for" + this + ";  \n OnDeactivate not implemented");
         }
 
-        public virtual void OnMouseDownRevert()
+        public virtual void OnPrimaryMouseDownRevert()
         {
             Debug.Log("Called OnMouseDownRevert for " + this);
             Vector3 newPos = transform.position;

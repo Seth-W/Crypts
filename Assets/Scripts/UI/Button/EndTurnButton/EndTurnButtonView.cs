@@ -36,12 +36,27 @@ namespace CFE
             //Subscribing to the control events
             control.EndTurnButtonHoverOffEvent += OnHoverOff;
             control.EndTurnButtonHoverOnEvent += OnHoverOn;
-            control.EndTurnButtonMouseDownEvent += OnMouseDown;
-            control.EndTurnButtonMouseDownRevertEvent += OnMouseDownRevert;
-            control.EndTurnButtonMouseUpEvent += OnMouseUp;
+            control.EndTurnButtonMouseDownEvent += OnPrimaryMouseDown;
+            control.EndTurnButtonMouseDownRevertEvent += OnPrimaryMouseDownRevert;
+            control.EndTurnButtonMouseUpEvent += OnPrimaryMouseUp;
             //Subscribing to the model events
             model.EndTurnButtonActivateEvent += OnActivate;
             model.EndTurnButtonDeactivateEvent += OnDeactivate;
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+
+            //Unsubscribing to the control events
+            control.EndTurnButtonHoverOffEvent -= OnHoverOff;
+            control.EndTurnButtonHoverOnEvent -= OnHoverOn;
+            control.EndTurnButtonMouseDownEvent -= OnPrimaryMouseDown;
+            control.EndTurnButtonMouseDownRevertEvent -= OnPrimaryMouseDownRevert;
+            control.EndTurnButtonMouseUpEvent -= OnPrimaryMouseUp;
+            //Unsubscribing to the model events
+            model.EndTurnButtonActivateEvent -= OnActivate;
+            model.EndTurnButtonDeactivateEvent -= OnDeactivate;
         }
 
 
@@ -49,6 +64,8 @@ namespace CFE
         void Start()
         {
             rend = GetComponent<Renderer>();
+            if (rend == null)
+                Debug.LogError("Could not find a Renderer componenet on " + gameObject);
         }
 
         /**
@@ -59,6 +76,8 @@ namespace CFE
         public override void OnDeactivate()
         {
             base.OnDeactivate();
+            if (rend == null)
+                Debug.LogError("Renderer not found on " + gameObject);
             rend.material.color = Color.yellow;
         }
 

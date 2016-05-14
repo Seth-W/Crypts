@@ -50,6 +50,7 @@ public class MousePicker : MonoBehaviour
             {
                 clickedObject.MouseDownRevert();
                 ignoreMouseUp = true;
+                clickedObject = null;
             }
 
             //If mouse click was released, calls mouseup on the IObjectControl
@@ -67,7 +68,10 @@ public class MousePicker : MonoBehaviour
                 else
                 {
                     if (clickedObject != null)
+                    {
+                        Debug.Log("Sending mouseUp to " + clickedObject);
                         clickedObject.MouseUp();
+                    }
                     else
                         Debug.LogError("ClickedObject == null");
                     clickedObject = null;

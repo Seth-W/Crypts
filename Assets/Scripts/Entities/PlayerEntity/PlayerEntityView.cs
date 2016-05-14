@@ -38,8 +38,9 @@ namespace CFE
             //Subscribe to PlayerEntityControl events
             control.PlayerEntityHoverOffEvent += OnHoverOff;
             control.PlayerEntityHoverOnEvent += OnHoverOn;
-            control.PlayerEntityMouseDownEvent += OnMouseDown;
-            control.PlayerEntityMouseUpEvent += OnMouseUp;
+            control.PlayerEntityMouseDownEvent += OnPrimaryMouseDown;
+            control.PlayerEntityMouseUpEvent += OnPrimaryMouseUp;
+            control.PlayerEntityMouseDownRevertEvent += OnPrimaryMouseDownRevert;
             //Subscribe to PlayerEnttiyModel events
             model.PlayerEntityActivateEvent += OnActivate;
             model.PlayerEntityDeactivateEvent += OnDeactivate;
@@ -50,8 +51,9 @@ namespace CFE
             //Unsubscribe to PlayerEntityControl events
             control.PlayerEntityHoverOffEvent -= OnHoverOff;
             control.PlayerEntityHoverOnEvent -= OnHoverOn;
-            control.PlayerEntityMouseDownEvent -= OnMouseDown;
-            control.PlayerEntityMouseUpEvent -= OnMouseUp;
+            control.PlayerEntityMouseDownEvent -= OnPrimaryMouseDown;
+            control.PlayerEntityMouseUpEvent -= OnPrimaryMouseUp;
+            control.PlayerEntityMouseDownRevertEvent -= OnPrimaryMouseDownRevert;
             //Unsubscribe to PlayerEnttiyModel events
             model.PlayerEntityActivateEvent -= OnActivate;
             model.PlayerEntityDeactivateEvent -= OnDeactivate;
@@ -64,7 +66,7 @@ namespace CFE
         */
         public void OnHoverOn()
         {
-            Debug.LogWarning("Called OnHoverOn for" + this + ";  \n OnMouseDown not implemented");
+            //Debug.LogWarning("Called OnHoverOn for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -74,7 +76,7 @@ namespace CFE
         */
         public void OnHoverOff()
         {
-            Debug.LogWarning("Called OnHoverOff for" + this + ";  \n OnMouseDown not implemented");
+            //Debug.LogWarning("Called OnHoverOff for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -82,7 +84,7 @@ namespace CFE
         *Called by and ObjectControl on the first frame that the mouse left clicks down while hovering over this gameObject
         *</summary>
         */
-        public void OnMouseDown()
+        public void OnPrimaryMouseDown()
         {
             Debug.LogWarning("Called OnMouseDown for" + this + ";  \n OnMouseDown not implemented");
         }
@@ -92,7 +94,7 @@ namespace CFE
         *Called by and ObjectControl on the first frame that the mouse left clicks up after left clicking down on this object
         *</summary>
         */
-        public void OnMouseUp()
+        public void OnPrimaryMouseUp()
         {
             Debug.LogWarning("Called OnMouseUp for" + this + ";  \n OnMouseDown not implemented");
         }
@@ -104,7 +106,7 @@ namespace CFE
         */
         public void OnActivate()
         {
-            Debug.LogWarning("Called OnEnable for" + this + ";  \n OnMouseDown not implemented");
+            //Debug.LogWarning("Called OnEnable for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -114,7 +116,7 @@ namespace CFE
         */
         public void OnDeactivate()
         {
-            Debug.LogWarning("Called OnDisable for" + this + ";  \n OnMouseDown not implemented");
+            //Debug.LogWarning("Called OnDisable for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -124,7 +126,7 @@ namespace CFE
         *the mousepicked object does not equal the mouseclicked object
         *</summary>
         */
-        public void OnMouseDownRevert()
+        public void OnPrimaryMouseDownRevert()
         {
             Debug.LogWarning("Called OnMouseDownRevert for" + this + ";  \n OnMouseDown not implemented");
         }

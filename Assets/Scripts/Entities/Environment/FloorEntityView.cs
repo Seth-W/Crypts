@@ -41,14 +41,14 @@ namespace CFE
                 Debug.LogError("Could not find a Renderer component on " + gameObject);
             }
             //Subscribe to FloorEntityModel events
-            model.FloorEntityActivateEvent += OnDeactivate;
-            model.FloorEntityDeactivateEvent += OnActivate;
+            model.FloorEntityActivateEvent += OnActivate;
+            model.FloorEntityDeactivateEvent += OnDeactivate;
             //Subscribe to FloorEntityControl events
             control.FloorEntityHoverOffEvent += OnHoverOff;
             control.FloorEntityHoverOnEvent += OnHoverOn;
-            control.FloorEntityMouseUpEvent += OnMouseUp;
-            control.FloorEntityMouseDownEvent += OnMouseDown;
-            control.FloorEntityMouseDownRevertEvent += OnMouseDownRevert;            
+            control.FloorEntityMouseUpEvent += OnPrimaryMouseUp;
+            control.FloorEntityMouseDownEvent += OnPrimaryMouseDown;
+            control.FloorEntityMouseDownRevertEvent += OnPrimaryMouseDownRevert;            
         }
 
         void OnDisable()
@@ -59,9 +59,9 @@ namespace CFE
             //Unsubscribe to FloorEntityControl events
             control.FloorEntityHoverOffEvent -= OnHoverOff;
             control.FloorEntityHoverOnEvent -= OnHoverOn;
-            control.FloorEntityMouseUpEvent -= OnMouseUp;
-            control.FloorEntityMouseDownEvent -= OnMouseDown;
-            control.FloorEntityMouseDownRevertEvent -= OnMouseDownRevert;
+            control.FloorEntityMouseUpEvent -= OnPrimaryMouseUp;
+            control.FloorEntityMouseDownEvent -= OnPrimaryMouseDown;
+            control.FloorEntityMouseDownRevertEvent -= OnPrimaryMouseDownRevert;
         }
         
         /**
@@ -82,7 +82,7 @@ namespace CFE
         */
         public void OnHoverOff()
         {
-            Debug.Log("Called OnHoverOff for " + this);
+            //Debug.Log("Called OnHoverOff for " + this);
             rend.material.color = Color.grey;
         }
 
@@ -91,9 +91,9 @@ namespace CFE
         *Called by and ObjectControl on the first frame that the mouse left clicks down while hovering over this gameObject
         *</summary>
         */
-        public void OnMouseDown()
+        public void OnPrimaryMouseDown()
         {
-            Debug.LogWarning("Called OnMouseDown for" + this + ";  \n OnMouseDown not implemented");
+            //Debug.LogWarning("Called OnMouseDown for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -101,9 +101,9 @@ namespace CFE
         *Called by and ObjectControl on the first frame that the mouse left clicks up after left clicking down on this object
         *</summary>
         */
-        public void OnMouseUp()
+        public void OnPrimaryMouseUp()
         {
-            Debug.LogWarning("Called OnMouseUp for" + this + ";  \n OnMouseUp not implemented");
+            //Debug.LogWarning("Called OnMouseUp for" + this + ";  \n OnMouseUp not implemented");
         }
 
         /**
@@ -113,7 +113,7 @@ namespace CFE
         */
         public void OnDeactivate()
         {
-            Debug.LogWarning("Called OnDeactivate for" + this + ";  \n OnDeactivate not implemented");
+            //Debug.LogWarning("Called OnDeactivate for" + this + ";  \n OnDeactivate not implemented");
         }
 
         /**
@@ -123,7 +123,7 @@ namespace CFE
         */
         public void OnActivate()
         {
-            Debug.LogWarning("Called OnActivate for" + this + ";  \n OnActivate not implemented");
+            //Debug.LogWarning("Called OnActivate for" + this + ";  \n OnActivate not implemented");
         }
 
         /**
@@ -133,9 +133,9 @@ namespace CFE
         *the mousepicked object does not equal the mouseclicked object
         *</summary>
         */
-        public void OnMouseDownRevert()
+        public void OnPrimaryMouseDownRevert()
         {
-            Debug.LogWarning("Called OnActivate for" + this + ";  \n OnActivate not implemented");
+            //Debug.LogWarning("Called OnActivate for" + this + ";  \n OnActivate not implemented");
         }
     }
 }

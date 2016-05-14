@@ -32,7 +32,8 @@ namespace CFE
         public void HoverOff()
         {
             //Debug.Log("Called HoverOff for " + this);
-            EndTurnButtonHoverOffEvent();
+            if(EndTurnButtonHoverOffEvent != null)
+                EndTurnButtonHoverOffEvent();
         }
 
         /**
@@ -43,7 +44,8 @@ namespace CFE
         public void HoverOn()
         {
             //Debug.Log("Called HoverOn for " + this);
-            EndTurnButtonHoverOnEvent();
+            if (EndTurnButtonHoverOnEvent != null)
+                EndTurnButtonHoverOnEvent();
         }
 
         /**
@@ -55,7 +57,8 @@ namespace CFE
         public void MouseDown()
         {
             //Debug.Log("Called MouseDown for " + this);
-            EndTurnButtonMouseDownEvent();
+            if (EndTurnButtonMouseDownEvent != null)
+                EndTurnButtonMouseDownEvent();
         }
 
         /**
@@ -66,7 +69,8 @@ namespace CFE
         public void MouseUp()
         {
             //Debug.Log("Called MouseUp for " + this);
-            EndTurnButtonMouseUpEvent();
+            if (EndTurnButtonMouseUpEvent != null)
+                EndTurnButtonMouseUpEvent();
         }
 
         /**
@@ -78,7 +82,8 @@ namespace CFE
         public void MouseDownRevert()
         {
             //Debug.Log("Called MouseDownRevert for " + this);
-            EndTurnButtonMouseDownRevertEvent();
+            if (EndTurnButtonMouseDownRevertEvent != null)
+                EndTurnButtonMouseDownRevertEvent();
         }
     }
 }

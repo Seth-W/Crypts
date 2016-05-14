@@ -27,17 +27,21 @@ namespace CFE
                 return;
             }
             //Subscribe to Control OnMouseUp/Down events
-            control.ActionButtonMouseUpEvent += OnMouseUp;
+            control.ActionButtonMouseUpEvent += OnPrimaryMouseUp;
 
         }
 
         void OnDisable()
         {
-            control.ActionButtonMouseUpEvent -= OnMouseUp;
+            control.ActionButtonMouseUpEvent -= OnPrimaryMouseUp;
         }
 
-        //Responds to control.ActionButtonMouseUpEvent
-        private void OnMouseUp()
+        /**
+        *<summary>
+        *Responds to control.ActionButtonMouseUpEvent
+        *</summary>
+        */
+        private void OnPrimaryMouseUp()
         {
             Debug.LogWarning("Called OnMouseUp for " + this + "\n OnMouseUp not implemented");
         }
@@ -51,7 +55,8 @@ namespace CFE
         public override void Deactivate()
         {
             //Debug.Log("Called Deactivate for " + this);
-            ActionButtonActivateEvent();
+            if(ActionButtonActivateEvent != null)
+                ActionButtonActivateEvent();
         }
 
         /**
@@ -62,7 +67,8 @@ namespace CFE
         public override void Activate()
         {
             //Debug.Log("Called Enable for " + this);
-            ActionButtonDeactivateEvent();
+            if (ActionButtonDeactivateEvent != null)
+                ActionButtonDeactivateEvent();
         }
     }
 }

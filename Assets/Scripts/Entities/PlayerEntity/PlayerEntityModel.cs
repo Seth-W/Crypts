@@ -24,7 +24,8 @@ namespace CFE
         public override void Deactivate()
         {
             Debug.Log("Called Disable for " + this);
-            PlayerEntityDeactivateEvent();
+            if(PlayerEntityDeactivateEvent != null)
+                PlayerEntityDeactivateEvent();
         }
 
         /**
@@ -35,7 +36,8 @@ namespace CFE
         public override void Activate()
         {
             Debug.Log("Called Enable for " + this);
-            PlayerEntityActivateEvent();
+            if (PlayerEntityActivateEvent != null)
+                PlayerEntityActivateEvent();
         }
     }
 }

@@ -27,13 +27,13 @@ namespace CFE
                 return;
             }
             //Subscribe to Control OnMouseUp/Down events
-            control.EndTurnButtonMouseUpEvent += OnMouseUp;
+            control.EndTurnButtonMouseUpEvent += OnPrimaryMouseUp;
 
         }
 
         void OnDisable()
         {
-            control.EndTurnButtonMouseUpEvent -= OnMouseUp;
+            control.EndTurnButtonMouseUpEvent -= OnPrimaryMouseUp;
         }
 
 
@@ -49,7 +49,9 @@ namespace CFE
         */
         public override void Activate()
         {
-
+            Debug.Log("Activate Called for " + this);
+            if (EndTurnButtonActivateEvent != null)
+                EndTurnButtonActivateEvent();
         }
 
         /**
@@ -59,7 +61,8 @@ namespace CFE
         */
         public override void Deactivate()
         {
-
+            if (EndTurnButtonDeactivateEvent != null)
+                EndTurnButtonDeactivateEvent();
         }
 
         /**
@@ -67,9 +70,9 @@ namespace CFE
         *Responds to control.ActionButtonMouseUpEvent
         *</summary>
         */
-        private void OnMouseUp()
+        private void OnPrimaryMouseUp()
         {
-            Debug.LogWarning("Called OnMouseUp for " + this + "\n OnMouseUp not implemented");
+            Debug.LogWarning("Called OnMouseUp for " + this + "'s Model\n OnMouseUp not implemented");
         }
     }
 }

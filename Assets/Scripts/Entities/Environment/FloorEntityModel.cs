@@ -24,7 +24,8 @@ namespace CFE
         public override void Activate()
         {
             //Debug.Log("Called Deactivate for " + this);
-            //FloorEntityActivateEvent();
+            //If(FloorEntityActivateEvent != null)
+                //FloorEntityActivateEvent();
         }
 
         /**
@@ -35,7 +36,8 @@ namespace CFE
         public override void Deactivate()
         {
             //Debug.Log("Called Enable for " + this);
-            //FloorEntityDeactivateEvent();
+            //If(FloorEntityDeactivateEvent != null)
+                //FloorEntityDeactivateEvent();
         }
     }
 }
