@@ -3,6 +3,13 @@ using System.Collections;
 
 namespace CFE
 {
+    /**
+    *<summary>
+    *Base class for the states in the Finite State Machine
+    *Contains abstract OnEnter/Exit methods
+    *Contains override methods for Equals and GetHashCode
+    *</summary>
+    */
     abstract class GameState
     {
         protected StateEnum _type;
@@ -32,10 +39,25 @@ namespace CFE
         {
             return (int)_type;
         }
-
+        /**
+        *<summary>
+        *Compares <see cref="type"/> to a StateEnum, <paramref name="other"/>
+        *Returns true if type is the same, otherwise returns false
+        *</summary>
+        */
         public bool compareState(StateEnum other)
         {
             return other == type;
+        }
+        /**
+        *<summary>
+        *Compares <see cref="type"/> to the <see cref="type"/> field of another GameState<paramref name="other"/>
+        *Returns true if the GameStates type field is the same, otherwise returns false
+        *</summary>
+        */
+        public bool compareState(GameState other)
+        {
+            return other.type == type;
         }
     }
 }

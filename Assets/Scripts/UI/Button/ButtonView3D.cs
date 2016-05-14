@@ -3,9 +3,23 @@ using UnityEngine;
 
 namespace CFE
 {
-    abstract class ButtonView : MonoBehaviour, IObjectView
+    /**
+    *Abstract base class for 3D button objects
+    *Contains default visual behavior for 3D buttons
+    */
+    abstract class ButtonView3D : MonoBehaviour, IObjectView
     {
- 
+
+
+        public virtual void OnEnable()
+        { 
+        }
+
+        public virtual void OnDisable()
+        {
+
+        }
+        
         /**
         *<summary>
         *Called by an ObjectControl on the first frame that the mouse hovers over this gameObject
@@ -13,7 +27,7 @@ namespace CFE
         */
         public virtual void OnHoverOn()
         {
-            Debug.LogError("Called OnHoverOn for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnHoverOn for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -23,7 +37,7 @@ namespace CFE
         */
         public virtual void OnHoverOff()
         {
-            Debug.LogError("Called OnHoverOff for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnHoverOff for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -59,7 +73,7 @@ namespace CFE
         */
         public virtual void OnActivate()
         {
-            Debug.LogError("Called OnActivate for" + this + ";  \n OnActivate not implemented");
+            Debug.LogWarning("Called OnActivate for" + this + ";  \n OnActivate not implemented");
         }
 
         /**
@@ -69,7 +83,15 @@ namespace CFE
         */
         public virtual void OnDeactivate()
         {
-            Debug.LogError("Called OnDeactivate for" + this + ";  \n OnDeactivate not implemented");
+            Debug.LogWarning("Called OnDeactivate for" + this + ";  \n OnDeactivate not implemented");
+        }
+
+        public virtual void OnMouseDownRevert()
+        {
+            Debug.Log("Called OnMouseDownRevert for " + this);
+            Vector3 newPos = transform.position;
+            newPos.y += .25f;
+            transform.position = newPos;
         }
     }
 }

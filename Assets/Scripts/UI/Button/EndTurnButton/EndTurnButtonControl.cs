@@ -3,28 +3,83 @@ using UnityEngine;
 
 namespace CFE
 {
-    class EndTurnButtonControl : ObjectControl
+    /**
+    *<summary>
+    *Contains the behavior for responding to User Input for an End Turn Button
+    *</summary>
+    */
+    class EndTurnButtonControl : MonoBehaviour, IObjectControl
     {
-        public static event EventHandler<InfoEventArgs<bool>> endTurnButtonPressedEvent;
+        public delegate void OnHoverOff();
+        public delegate void OnHoverOn();
+        public delegate void OnMouseDown();
+        public delegate void OnMouseUp();
+        public delegate void OnMouseDownRevert();
 
-        public override void HoverOff()
+        public event OnHoverOff EndTurnButtonHoverOffEvent;
+        public event OnHoverOn EndTurnButtonHoverOnEvent;
+        public event OnMouseDown EndTurnButtonMouseDownEvent;
+        public event OnMouseUp EndTurnButtonMouseUpEvent;
+        public event OnMouseDownRevert EndTurnButtonMouseDownRevertEvent;
+
+
+
+        /**
+        *<summary>
+        *Called on the first frame that a ray cast from the mouse's position on the screen no longer collides with this object
+        *</summary>
+        */
+        public void HoverOff()
         {
-            throw new NotImplementedException();
+            //Debug.Log("Called HoverOff for " + this);
+            EndTurnButtonHoverOffEvent();
         }
 
-        public override void HoverOn()
+        /**
+        *<summary>
+        *Called on the frame when a ray cast from the mouse's position on the screen first collides with this object
+        *</summary>
+        */
+        public void HoverOn()
         {
-            throw new NotImplementedException();
+            //Debug.Log("Called HoverOn for " + this);
+            EndTurnButtonHoverOnEvent();
         }
 
-        public override void MouseDown()
+        /**
+        *<summary>
+        *Called on the first frame that the left mouse button is pressed while a ray cast from the
+        *mouse's position on the screen collides with this object
+        *</summary>
+        */
+        public void MouseDown()
         {
-            throw new NotImplementedException();
+            //Debug.Log("Called MouseDown for " + this);
+            EndTurnButtonMouseDownEvent();
         }
 
-        public override void MouseUp()
+        /**
+        *<summary>
+        *Called on the first frame that the left mouse button is released after MouseDown() has been called
+        *</summary>
+        */
+        public void MouseUp()
         {
-            endTurnButtonPressedEvent(this, new InfoEventArgs<bool>(true));
+            //Debug.Log("Called MouseUp for " + this);
+            EndTurnButtonMouseUpEvent();
+        }
+
+        /**
+        *<summary>
+        *Called on the first frame for the mouseclicked object that
+        *-- while the left mouse button is held down-- the mousepicked object does not equal the mouseclicked object
+        *</summary>
+        */
+        public void MouseDownRevert()
+        {
+            //Debug.Log("Called MouseDownRevert for " + this);
+            EndTurnButtonMouseDownRevertEvent();
         }
     }
 }
+

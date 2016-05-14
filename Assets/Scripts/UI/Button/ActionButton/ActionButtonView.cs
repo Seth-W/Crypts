@@ -3,7 +3,12 @@ using UnityEngine;
 
 namespace CFE
 {
-    class ActionButtonView : ButtonView
+    /**
+    *<summary>
+    *Contains the visual behavior for an ActionButton
+    *</summary>
+    */
+    class ActionButtonView : ButtonView3D
     {
     }
 }

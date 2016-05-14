@@ -3,6 +3,13 @@ using UnityEngine;
 
 namespace CFE
 {
+    /**
+    *<summary>
+    *Base Visual interface for all objects that the mouse can interact with
+    *Contains behaviors to respond to MouseUp/Down & HoverOn/Off events
+    *Contains behavior to respond to Activate/Deactivate events
+    *</summary>
+    */
     interface IObjectView
     {
 
@@ -42,6 +49,14 @@ namespace CFE
         *</summary>
         */
         void OnDeactivate();
+        /**
+        *<summary>
+        *Called on the first frame for the mouseclicked object that
+        *-- while the left mouse button is held down-- 
+        *the mousepicked object does not equal the mouseclicked object
+        *</summary>
+        */
+        void OnMouseDownRevert();
 
     }
 }

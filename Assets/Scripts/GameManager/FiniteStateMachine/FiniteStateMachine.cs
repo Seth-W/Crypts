@@ -24,28 +24,49 @@ namespace CFE
 
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Return))
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //                          Debug Code                           |
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 transition(StateEnum.CombatState);
+                Debug.LogError("Don't Forget to Remove Me");
             }
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //                          Debug Code                           |
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         }
 
 
 
 
         /**
-        *<summary>Call to transition from State to state. Checks if already in transition and calls the OnEnter and OnExit methods for the respective states</summary>
+        *<summary>
+        *Call to transition from State to state. 
+        *Checks if already in transition and calls the OnEnter and OnExit methods for the respective states
+        *</summary>
         */
         void transition(GameState targetState)
         {
+            //If already being called to transition, return
             if (_inTransition == true)
                 return;
+            //Store transition starting
             _inTransition = true;
+            //Call onExit for current state, update activeState and call OnEnter
             _activeState.onExit();
             _activeState = targetState;
             _activeState.onEnter();
+            //Store end of transtition
             _inTransition = false;
         }
+
+        /**
+        *<summary>
+        *Overload of transition to take <see cref="StateEnum"/>
+        *<seealso cref="transition(GameState)"/>
+        *</summary>
+        */
         void transition(StateEnum targetState)
         {
             GameState state = states[targetState];
@@ -62,7 +83,9 @@ namespace CFE
 
 
         /**
-        *<summary>Checks if another FSM exists in the scene and deletes this object if so</summary>
+        *<summary>
+        *Checks if another FSM exists in the scene and deletes this object if so
+        *</summary>
         */
         void initAsUnique()
         {
@@ -72,13 +95,20 @@ namespace CFE
                 Destroy(this);
         }
         /**
-        *<summary>Initializes the values in the Finite State Machine</summary>
+        *<summary>
+        *Initializes the values in the Finite State Machine
+        *</summary>
         */
         void init()
         {
             _inTransition = false;
             populateStates();
         }
+        /**
+        *<summary>
+        *Called (by <see cref="init"/>) during Start to populate the <see cref="states"/> dictionary
+        *</summary>
+        */
         void populateStates()
         {
             states = new Dictionary<StateEnum, GameState>();

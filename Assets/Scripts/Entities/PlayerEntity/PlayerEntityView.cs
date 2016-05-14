@@ -64,7 +64,7 @@ namespace CFE
         */
         public void OnHoverOn()
         {
-            Debug.LogError("Called OnHoverOn for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnHoverOn for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -74,7 +74,7 @@ namespace CFE
         */
         public void OnHoverOff()
         {
-            Debug.LogError("Called OnHoverOff for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnHoverOff for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -84,7 +84,7 @@ namespace CFE
         */
         public void OnMouseDown()
         {
-            Debug.LogError("Called OnMouseDown for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnMouseDown for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -94,7 +94,7 @@ namespace CFE
         */
         public void OnMouseUp()
         {
-            Debug.LogError("Called OnMouseUp for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnMouseUp for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -104,7 +104,7 @@ namespace CFE
         */
         public void OnActivate()
         {
-            Debug.LogError("Called OnEnable for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnEnable for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -114,7 +114,19 @@ namespace CFE
         */
         public void OnDeactivate()
         {
-            Debug.LogError("Called OnDisable for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnDisable for" + this + ";  \n OnMouseDown not implemented");
+        }
+
+        /**
+        *<summary>
+        *Called on the first frame for the mouseclicked object that
+        *-- while the left mouse button is held down-- 
+        *the mousepicked object does not equal the mouseclicked object
+        *</summary>
+        */
+        public void OnMouseDownRevert()
+        {
+            Debug.LogWarning("Called OnMouseDownRevert for" + this + ";  \n OnMouseDown not implemented");
         }
     }
 }

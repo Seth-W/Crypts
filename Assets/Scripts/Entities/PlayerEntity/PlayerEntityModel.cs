@@ -16,15 +16,22 @@ namespace CFE
         public event OnDeactivate PlayerEntityDeactivateEvent;
         public event OnActivate PlayerEntityActivateEvent;
 
-
-        //Base FloorEntityModel does not Enable or Disable
+        /**
+        *<summary>
+        *Responds to ObjectModel.actice = false
+        *</summary>
+        */
         public override void Deactivate()
         {
             Debug.Log("Called Disable for " + this);
             PlayerEntityDeactivateEvent();
         }
 
-        //Base FloorEntityModel does not Enable or Disable
+        /**
+        *<summary>
+        *Responds to ObjectModel.actice = true
+        *</summary>
+        */
         public override void Activate()
         {
             Debug.Log("Called Enable for " + this);

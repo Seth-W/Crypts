@@ -16,18 +16,26 @@ namespace CFE
         public event OnDeactivate FloorEntityActivateEvent;
         public event OnActivate FloorEntityDeactivateEvent;
 
-        //Base FloorEntityModel does not Enable or Disable
-        public override void Deactivate()
-        {
-            //Debug.Log("Called Deactivate for " + this);
-            FloorEntityActivateEvent();
-        }
-
-        //Base FloorEntityModel does not Enable or Disable
+        /**
+        *<summary>
+        *Base FloorEntityModel does not Enable or Disable
+        *</summary>
+        */
         public override void Activate()
         {
+            //Debug.Log("Called Deactivate for " + this);
+            //FloorEntityActivateEvent();
+        }
+
+        /**
+        *<summary>
+        *Base FloorEntityModel does not Enable or Disable
+        *</summary>
+        */
+        public override void Deactivate()
+        {
             //Debug.Log("Called Enable for " + this);
-            FloorEntityDeactivateEvent();
+            //FloorEntityDeactivateEvent();
         }
     }
 }

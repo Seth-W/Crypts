@@ -2,10 +2,16 @@
 
 namespace CFE
 {
-    abstract class ObjectModel : MonoBehaviour
+    /**
+    *<summary>
+    *Base component class for all entities that can be interacted with in a scene
+    *Implements <see cref="IObjectModel"/>
+    *Stores a boolean <see cref="_active"/> and 
+    *A setActive method which calls Activate/Deactivate accordingly
+    *</summary>
+    */
+    abstract class ObjectModel : MonoBehaviour, IObjectModel
     {
-        protected ObjectView view;
-
         bool _active;
         public bool active
         {
@@ -13,18 +19,16 @@ namespace CFE
             set { setActive(value); }
         }
 
-        public virtual void Start()
-        {
-            view = GetComponent<ObjectView>();
-            if (view == null)
-                Debug.LogError("Could not find an ObjectView component on " + this.gameObject);
-        }
-
-
-
         public abstract void Activate();
         public abstract void Deactivate();
 
+        /**
+        *<summary>
+        *Called by the set method for <see cref="active"/>
+        *If no change to the value the method returns
+        *else it changes the value and calls the appropriate Activate/Deactivate method
+        *</summary>
+        */
         private void setActive(bool b)
         {
             if (_active = b)

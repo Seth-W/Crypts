@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CFE
@@ -47,18 +48,20 @@ namespace CFE
             control.FloorEntityHoverOnEvent += OnHoverOn;
             control.FloorEntityMouseUpEvent += OnMouseUp;
             control.FloorEntityMouseDownEvent += OnMouseDown;
+            control.FloorEntityMouseDownRevertEvent += OnMouseDownRevert;            
         }
 
         void OnDisable()
         {
             //Unsubscribe to FloorEntityModel events
-            model.FloorEntityActivateEvent -= OnDeactivate;
-            model.FloorEntityDeactivateEvent -= OnActivate;
+            model.FloorEntityActivateEvent -= OnActivate;
+            model.FloorEntityDeactivateEvent -= OnDeactivate;
             //Unsubscribe to FloorEntityControl events
             control.FloorEntityHoverOffEvent -= OnHoverOff;
             control.FloorEntityHoverOnEvent -= OnHoverOn;
             control.FloorEntityMouseUpEvent -= OnMouseUp;
             control.FloorEntityMouseDownEvent -= OnMouseDown;
+            control.FloorEntityMouseDownRevertEvent -= OnMouseDownRevert;
         }
         
         /**
@@ -79,7 +82,7 @@ namespace CFE
         */
         public void OnHoverOff()
         {
-            //Debug.Log("Called OnHoverOff for " + this);
+            Debug.Log("Called OnHoverOff for " + this);
             rend.material.color = Color.grey;
         }
 
@@ -90,7 +93,7 @@ namespace CFE
         */
         public void OnMouseDown()
         {
-            Debug.LogError("Called OnMouseDown for" + this + ";  \n OnMouseDown not implemented");
+            Debug.LogWarning("Called OnMouseDown for" + this + ";  \n OnMouseDown not implemented");
         }
 
         /**
@@ -100,7 +103,7 @@ namespace CFE
         */
         public void OnMouseUp()
         {
-            Debug.LogError("Called OnMouseUp for" + this + ";  \n OnMouseUp not implemented");
+            Debug.LogWarning("Called OnMouseUp for" + this + ";  \n OnMouseUp not implemented");
         }
 
         /**
@@ -110,7 +113,7 @@ namespace CFE
         */
         public void OnDeactivate()
         {
-            Debug.LogError("Called OnDeactivate for" + this + ";  \n OnDeactivate not implemented");
+            Debug.LogWarning("Called OnDeactivate for" + this + ";  \n OnDeactivate not implemented");
         }
 
         /**
@@ -120,9 +123,20 @@ namespace CFE
         */
         public void OnActivate()
         {
-            Debug.LogError("Called OnActivate for" + this + ";  \n OnActivate not implemented");
+            Debug.LogWarning("Called OnActivate for" + this + ";  \n OnActivate not implemented");
         }
 
+        /**
+        *<summary>
+        *Called on the first frame for the mouseclicked object that
+        *-- while the left mouse button is held down-- 
+        *the mousepicked object does not equal the mouseclicked object
+        *</summary>
+        */
+        public void OnMouseDownRevert()
+        {
+            Debug.LogWarning("Called OnActivate for" + this + ";  \n OnActivate not implemented");
+        }
     }
 }
 
