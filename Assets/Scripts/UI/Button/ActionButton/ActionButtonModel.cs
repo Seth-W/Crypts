@@ -10,6 +10,18 @@ namespace CFE
     */
     class ActionButtonModel : ObjectModel
     {
+        [SerializeField]
+        EntityAbilityEnum abilityThisButtonRepresents;
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //                          Debug Code                           |
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        [SerializeField]
+        PlayerEntityModel actor, target;
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //                          Debug Code                           |
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        AbilityBook book;
+
         ActionButtonControl control;
 
         public delegate void OnDeactivate();
@@ -36,6 +48,11 @@ namespace CFE
             control.ActionButtonMouseUpEvent -= OnPrimaryMouseUp;
         }
 
+        void Start()
+        {
+            book = new AbilityBook();
+        }
+
         /**
         *<summary>
         *Responds to control.ActionButtonMouseUpEvent
@@ -43,6 +60,7 @@ namespace CFE
         */
         private void OnPrimaryMouseUp()
         {
+            book.spellBook[abilityThisButtonRepresents](actor, target).Exectute();
             Debug.LogWarning("Called OnMouseUp for " + this + "\n OnMouseUp not implemented");
         }
 

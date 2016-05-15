@@ -7,6 +7,6 @@
     */
     enum StateEnum
     {
-        CombatState,
+        CombatState, test1, test2
     }
 }

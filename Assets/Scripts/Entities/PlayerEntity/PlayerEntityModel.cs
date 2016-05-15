@@ -8,7 +8,7 @@ namespace CFE
     *Contains the simulation information for a Player Entity
     *</summary>
     */
-    class PlayerEntityModel : ObjectModel
+    class PlayerEntityModel : EntityModel
     {
         public delegate void OnDeactivate();
         public delegate void OnActivate();

@@ -27,17 +27,22 @@ namespace CFE
             }
             //Initialize the List
             initiativeOrder = new List<QueueNode>();
+            
             //Create a queuenode for each entity with a call to roll initiative
             foreach (EntityModel e in entities)
             {
                 initiativeOrder.Add(new QueueNode(e, e.rollInitiative() ) );
             }
+            
             //Sort the list based on the initiative value stored in the QueueNodes
             initiativeOrder.Sort();
-            /*foreach (QueueNode n in initiativeOrder)
+
+            //Debug.Log(initiativeOrder.Count + " # of items in Initiative order");
+
+            foreach (QueueNode n in initiativeOrder)
             {
                 Debug.Log(n.entity + ": " + n.initiative);
-            }*/
+            }
         }
 
         public void endTurn()

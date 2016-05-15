@@ -20,7 +20,7 @@ namespace CFE
         public event OnHoverOn ActionButtonHoverOnEvent;
         public event OnMouseDown ActionButtonMouseDownEvent;
         public event OnMouseUp ActionButtonMouseUpEvent;
-        public event OnMouseDownRevert ActionButtonMouseDownRevert;
+        public event OnMouseDownRevert ActionButtonMouseDownRevertEvent;
 
 
 
@@ -82,8 +82,8 @@ namespace CFE
         public void MouseDownRevert()
         {
             //Debug.Log("Called MouseDownRevert for " + this);
-            if (ActionButtonMouseDownRevert != null)
-                ActionButtonMouseDownRevert();
+            if (ActionButtonMouseDownRevertEvent != null)
+                ActionButtonMouseDownRevertEvent();
         }
     }
 }

@@ -45,6 +45,7 @@ namespace CFE
         *Call to transition from State to state. 
         *Checks if already in transition and calls the OnEnter and OnExit methods for the respective states
         *</summary>
+        *<param name="targetState"></param>
         */
         void transition(GameState targetState)
         {
@@ -66,6 +67,7 @@ namespace CFE
         *Overload of transition to take <see cref="StateEnum"/>
         *<seealso cref="transition(GameState)"/>
         *</summary>
+        *<param name="targetState"></param>
         */
         void transition(StateEnum targetState)
         {

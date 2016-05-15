@@ -8,7 +8,7 @@ namespace CFE
         public delegate void NewEntity(EntityModel newEntity);
         public static event NewEntity newEntityEvent;
 
-        StatBlock stats;
+        public StatBlock stats;
 
         //Editor defined values to initialize stats
         [SerializeField]
