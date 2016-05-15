@@ -27,12 +27,12 @@ namespace CFE
         public void Exectute()
         {
             Debug.Log(actor + " Healed " + target);
-            Debug.LogError("Execute not implemented for Attack Commands");
+            Debug.LogWarning("Execute not implemented for Attack Commands");
         }
 
         public void Undo()
         {
-            Debug.LogError("Undo not implemented for Attack Commands");
+            Debug.LogWarning("Undo not implemented for Attack Commands");
         }
     }
 }

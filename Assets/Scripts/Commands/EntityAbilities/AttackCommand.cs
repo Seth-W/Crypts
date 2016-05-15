@@ -27,7 +27,7 @@ namespace CFE
         public void Exectute()
         {
             Debug.Log(actor + " attacks " + target);
-            //Debug.LogError("Execute not implemented for Attack Commands");
+            Debug.LogError("Execute not implemented for Attack Commands");
         }
 
         public void Undo()

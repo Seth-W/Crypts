@@ -20,7 +20,7 @@ namespace CFE
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         //                          Debug Code                           |
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        AbilityBook book;
+        public AbilityBook AbilityMasterList;
 
         ActionButtonControl control;
 
@@ -48,11 +48,6 @@ namespace CFE
             control.ActionButtonMouseUpEvent -= OnPrimaryMouseUp;
         }
 
-        void Start()
-        {
-            book = new AbilityBook();
-        }
-
         /**
         *<summary>
         *Responds to control.ActionButtonMouseUpEvent
@@ -60,7 +55,7 @@ namespace CFE
         */
         private void OnPrimaryMouseUp()
         {
-            book.spellBook[abilityThisButtonRepresents](actor, target).Exectute();
+            AbilityMasterList.spellBook[abilityThisButtonRepresents](actor, target).Exectute();
             Debug.LogWarning("Called OnMouseUp for " + this + "\n OnMouseUp not implemented");
         }
 

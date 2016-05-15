@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace CFE
 {
-    class AbilityBook 
+    [CreateAssetMenu(fileName =  "Ability Book", menuName = "Scriptable Objects/Ability Book", order = 0)]
+    class AbilityBook  : ScriptableObject
     {
 
         public delegate ICommand Ability(EntityModel actor, EntityModel target);
@@ -13,7 +14,7 @@ namespace CFE
         public Dictionary<EntityAbilityEnum,Ability>  spellBook;
 
 
-        public AbilityBook()
+        public void init()
         {
             spellBook = new Dictionary<EntityAbilityEnum, Ability>();
             spellBook.Add(EntityAbilityEnum.Attack, attack);
