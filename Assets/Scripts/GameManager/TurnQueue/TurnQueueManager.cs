@@ -14,6 +14,7 @@ namespace CFE
     class TurnQueueManager : MonoBehaviour
     {
         public static event EventHandler<InfoEventArgs<EntityModel>> endTurnEvent;
+        public static EntityModel activeEntity;
 
         //Master entity list for an egagement
         List<EntityModel> entities;
@@ -32,10 +33,19 @@ namespace CFE
             EntityModel.newEntityEvent -= onNewEntityEvent;
         }
 
+
         void Start()
         {
             //Inititialize the master list of entities
             entities = new List<EntityModel>();
+
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //                          Debug Code                           |
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Debug.LogWarning("Don't Forget to hit enter to initialize a turn queue");
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //                          Debug Code                           |
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         }
 
         void Update()
@@ -62,6 +72,7 @@ namespace CFE
         private void rollInitiative()
         {
             queue = new TurnQueue(entities);
+            activeEntity = queue.activeEntity;
         }
 
         /**
@@ -84,6 +95,7 @@ namespace CFE
         private void OnEndTurnButtonPressedEvent(object sender, InfoEventArgs<bool> e)
         {
             queue.endTurn();
+            activeEntity = queue.activeEntity;
             endTurnEvent(this, new InfoEventArgs<EntityModel>(queue.activeEntity));
         }
 

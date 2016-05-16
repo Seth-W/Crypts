@@ -6,7 +6,7 @@ using UnityEngine;
 namespace CFE
 {
     [CreateAssetMenu(fileName =  "Ability Book", menuName = "Scriptable Objects/Ability Book", order = 0)]
-    class AbilityBook  : ScriptableObject
+    class AbilityMasterList  : ScriptableObject
     {
 
         public delegate ICommand Ability(EntityModel actor, EntityModel target);

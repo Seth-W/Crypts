@@ -13,6 +13,8 @@ namespace CFE
         //Editor defined values to initialize stats
         [SerializeField]
         int a, s, i, diceValue;
+        [SerializeField]
+        EntityAbilityEnum[] abilityList;
 
         public int agility { get { return stats.agility; } }
         public int strength { get { return stats.strength; } }
@@ -42,6 +44,17 @@ namespace CFE
                 retValue += Mathf.FloorToInt(UnityEngine.Random.value * diceValue);
             }
             return retValue;
+        }
+
+        public EntityAbilityEnum getAbility(int i)
+        {
+            if (i < abilityList.Length)
+                return abilityList[i];
+            else
+            {
+                Debug.LogError("Index out of range of Ability List for " + this + " " + this.gameObject);
+                return EntityAbilityEnum.NULL;
+            }
         }
     }
 }

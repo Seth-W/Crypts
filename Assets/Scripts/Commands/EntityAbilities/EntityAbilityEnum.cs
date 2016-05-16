@@ -7,6 +7,6 @@
     */
     enum EntityAbilityEnum
     {
-        Attack, Heal
+        NULL, Attack, Heal
     }
 }

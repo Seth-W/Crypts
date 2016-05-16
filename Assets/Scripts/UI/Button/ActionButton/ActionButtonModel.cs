@@ -11,7 +11,7 @@ namespace CFE
     class ActionButtonModel : ObjectModel
     {
         [SerializeField]
-        EntityAbilityEnum abilityThisButtonRepresents;
+        int abilityThisButtonRepresents;
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         //                          Debug Code                           |
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -20,7 +20,7 @@ namespace CFE
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         //                          Debug Code                           |
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        public AbilityBook AbilityMasterList;
+        public AbilityMasterList AbilityMasterList;
 
         ActionButtonControl control;
 
@@ -55,7 +55,7 @@ namespace CFE
         */
         private void OnPrimaryMouseUp()
         {
-            AbilityMasterList.spellBook[abilityThisButtonRepresents](actor, target).Exectute();
+            AbilityMasterList.spellBook[getAbilityForThisButton()](actor, target).Exectute();
             Debug.LogWarning("Called OnMouseUp for " + this + "\n OnMouseUp not implemented");
         }
 
@@ -82,6 +82,15 @@ namespace CFE
             //Debug.Log("Called Enable for " + this);
             if (ActionButtonDeactivateEvent != null)
                 ActionButtonDeactivateEvent();
+        }
+        /**
+        *<summary>
+        *Gets an ability Enum from the active entity representing the ability for this button to control
+        *</summary>
+        */
+        public EntityAbilityEnum getAbilityForThisButton()
+        {
+            return TurnQueueManager.activeEntity.getAbility(abilityThisButtonRepresents);
         }
     }
 }

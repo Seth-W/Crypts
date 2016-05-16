@@ -6,7 +6,7 @@ namespace CFE
     public class ScriptableObjectManager : MonoBehaviour
     {
         [SerializeField]
-        AbilityBook abilityMasterList;
+        AbilityMasterList abilityMasterList;
 
         void Start()
         {
